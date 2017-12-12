@@ -1,0 +1,25 @@
+{
+    "name": "TMLOptions",
+    "uri": "http://tml",
+    "prefix": "tml",
+    "xml": {
+        "tagAlias": "lowerCase"
+    },
+    "types": [
+        {
+            "name": "OptionsNode",
+            "extends": [
+                "bpmn:FlowNode"
+            ],
+            "properties": [
+                {
+                    "name": "options",
+                    "isAttr": true,
+                    "type": "String"
+                }
+            ]
+        }
+    ],
+    "emumerations": [],
+    "associations": []
+}

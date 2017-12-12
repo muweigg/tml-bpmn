@@ -1,0 +1,66 @@
+{
+  "name": "tml-bpmn",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --config config/webpack.prod.js --progress",
+    "serve": "webpack-dev-server --config config/webpack.dev.js --progress --profile --watch",
+    "serve:hot": "npm run serve -- --hot --inline"
+  },
+  "dependencies": {
+    "bpmn-js": "^0.25.2",
+    "bpmn-js-token-simulation": "^0.6.0",
+    "classlist.js": "^1.1.20150312",
+    "diagram-js": "^0.23.0",
+    "diagram-js-minimap": "^0.5.5",
+    "lodash": "^4.17.4",
+    "rxjs": "^5.5.5"
+  },
+  "devDependencies": {
+    "@ngtools/webpack": "^1.8.3",
+    "@types/node": "^8.0.53",
+    "autoprefixer": "^7.1.6",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-minify": "^0.2.0",
+    "clean-webpack-plugin": "^0.1.17",
+    "copy-webpack-plugin": "^4.2.1",
+    "css-loader": "^0.28.7",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "file-loader": "^1.1.5",
+    "html-loader": "^0.5.1",
+    "html-webpack-plugin": "^2.30.1",
+    "json-loader": "^0.5.7",
+    "node-sass": "^4.7.2",
+    "postcss-loader": "^2.0.8",
+    "raw-loader": "^0.5.1",
+    "sass-loader": "^6.0.6",
+    "script-ext-html-webpack-plugin": "^1.8.8",
+    "script-loader": "^0.7.2",
+    "style-loader": "^0.19.0",
+    "ts-loader": "^3.2.0",
+    "ts-node": "^3.3.0",
+    "tslib": "^1.8.0",
+    "typescript": "^2.6.1",
+    "uglifyjs-webpack-plugin": "^1.1.0",
+    "url-loader": "^0.6.2",
+    "webpack": "^3.8.1",
+    "webpack-bundle-analyzer": "^2.9.1",
+    "webpack-dev-server": "^2.9.4",
+    "webpack-merge": "^4.1.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/muweigg/tml-bpmn.git"
+  },
+  "keywords": [
+    "bpmn"
+  ],
+  "author": "Mui",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/muweigg/tml-bpmn/issues"
+  },
+  "homepage": "https://github.com/muweigg/tml-bpmn#readme"
+}

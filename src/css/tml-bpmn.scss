@@ -1,0 +1,174 @@
+@import './bpmn';
+
+#bpmn-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.bpmn-hide {
+    display: none !important;
+}
+
+.bpmn-keyboard-shortcuts {
+    background-color: rgba(0, 0, 0, .1);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: none;
+
+    &.active {
+        display: block;
+    }
+
+    div {
+        background-color: #fff;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        border-radius: 5px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 20px;
+
+        h1 {
+            font-size: 24px;
+        }
+
+        table {
+            font-size: 14px;
+
+            td {
+                padding: 5px 10px;
+                // height: 30px;
+            }
+        }
+    }
+}
+
+.bpmn-downloads {
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+    z-index: 100;
+    background-color: #fff;
+    border-radius: 3px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    padding-left: 5px;
+
+    a {
+        display: inline-block;
+        margin-right: 5px;
+        padding: 2px 5px;
+        font-size: 22px;
+        line-height: 26px;
+        color: #ddd;
+        text-decoration: none;
+        text-align: center;
+        position: relative;
+        vertical-align: middle;
+
+        &.active {
+            color: #555;
+        }
+    }
+}
+
+.bpmn-auxiliary-tools {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+
+    button {
+        font-size: 22px;
+        line-height: 26px;
+        text-align: center;
+        background: none;
+        border: 0;
+        padding: 0;
+        outline: none;
+        cursor: pointer;
+        background-color: #fff;
+        border-radius: 3px;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        padding: 5px;
+    }
+}
+
+/* .djs-palette {
+    
+    .djs-palette-entries {
+
+        .entry {
+
+            &.bpmn-icon-intermediate-event-none,
+            &.bpmn-icon-data-object,
+            &.bpmn-icon-data-store,
+            &.bpmn-icon-participant {
+                display: none !important;
+            }
+        }
+    }
+} */
+
+.djs-popup.bpmn-replace {
+
+    .entry {
+
+        // start event and end event
+        &.bpmn-icon-intermediate-event-none,
+        &.bpmn-icon-start-event-message,
+        &.bpmn-icon-start-event-timer,
+        &.bpmn-icon-start-event-condition,
+        &.bpmn-icon-start-event-signal,
+        &.bpmn-icon-end-event-message,
+        &.bpmn-icon-end-event-escalation,
+        &.bpmn-icon-end-event-error,
+        &.bpmn-icon-end-event-compensation,
+        &.bpmn-icon-end-event-signal,
+        &.bpmn-icon-end-event-terminate {
+            display: none !important;
+        }
+
+        // gateway
+        &.bpmn-icon-gateway-or,
+        &.bpmn-icon-gateway-complex,
+        &.bpmn-icon-gateway-eventbased {
+            display: none !important;
+        }
+
+        // task
+        &.bpmn-icon-send,
+        &.bpmn-icon-receive,
+        &.bpmn-icon-user,
+        &.bpmn-icon-manual,
+        &.bpmn-icon-business-rule,
+        &.bpmn-icon-service,
+        &.bpmn-icon-script,
+        &.bpmn-icon-call-activity,
+        &.bpmn-icon-transaction,
+        // &.bpmn-icon-subprocess-collapsed,
+        // &.bpmn-icon-subprocess-expanded,
+        &.bpmn-icon-event-subprocess-expanded {
+            display: none !important;
+        }
+    }
+}
+
+.djs-context-pad {
+
+    .entry {
+
+        &.bpmn-icon-intermediate-event-none {
+            display: none !important;
+        }
+    }
+}
+
+.bjs-powered-by {
+    display: none !important;
+}

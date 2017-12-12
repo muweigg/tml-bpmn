@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>tml-bpmn</title>
+</head>
+<body>
+    <button id="navigated">
+        Toggle Navigated
+    </button>
+
+    <button id="modeler">
+        Toggle Modeler
+    </button>
+    
+    <button id="tokenSimulation">
+        Toggle Token Simulation
+    </button>
+
+    <br>
+    
+    <button id="loadTestXML">
+        load Test XML BPMN diagram
+    </button>
+
+    <button id="newDiagram">
+        new BPMN diagram
+    </button>
+    
+    <button id="exportXML">
+        Export XML
+    </button>
+    
+    <button id="exportJSON">
+        Export JSON
+    </button>
+
+    <div class="bpmn-container">
+        <div id="bpmn-canvas"></div>
+        
+        <div class="bpmn-keyboard-shortcuts">
+            <div>
+                <h1>快捷键</h1>
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>撤销</td>
+                            <td>Ctrl + Z</td>
+                        </tr>
+                        <tr>
+                            <td>前进</td>
+                            <td>Ctrl + ⇧ + Z</td>
+                        </tr>
+                        <tr>
+                            <td>全选</td>
+                            <td>Ctrl + A</td>
+                        </tr>
+                        <tr>
+                            <td>滚动 (垂直)</td>
+                            <td>Ctrl + Scrolling</td>
+                        </tr>
+                        <tr>
+                            <td>滚动 (水平)</td>
+                            <td>Ctrl + ⇧ + Scrolling</td>
+                        </tr>
+                        <tr>
+                            <td>编辑</td>
+                            <td>E</td>
+                        </tr>
+                        <tr>
+                            <td>拖动</td>
+                            <td>H</td>
+                        </tr>
+                        <tr>
+                            <td>多选</td>
+                            <td>L</td>
+                        </tr>
+                        <!-- <tr>
+                            <td>Space Tool</td>
+                            <td>S</td>
+                        </tr> -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <div class="bpmn-downloads">
+            <a class="download-diagram" href="javascript:" title="download BPMN diagram">
+                <span class="app-icon-download"></span>
+            </a>
+        
+            <a class="download-svg" href="javascript:" title="download as SVG image">
+                <span class="app-icon-picture"></span>
+            </a>
+        </div>
+        
+        <div class="bpmn-auxiliary-tools">
+            <button>
+                <span class="app-icon-size-reset"></span>
+            </button>
+            <button>
+                <span class="app-icon-keyboard"></span>
+            </button>
+        </div>
+    </div>
+</body>
+</html>
