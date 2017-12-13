@@ -12,8 +12,10 @@ const COMMON_STYLE = helpers.root('src/styles/common.scss');
 
 module.exports = webpackMerge(config({ env: ENV }), {
     output: {
-        filename: '[name].[chunkhash].bundle.js',
-        chunkFilename: '[id].[chunkhash].chunk.js',
+        // filename: '[name].[chunkhash].bundle.js',
+        // chunkFilename: '[id].[chunkhash].chunk.js',
+        filename: '[name].js',
+        chunkFilename: '[id].js',
     },
     module: {
         rules: [
@@ -22,7 +24,7 @@ module.exports = webpackMerge(config({ env: ENV }), {
                 use: ExtractTextPlugin.extract({
                     fallback: 'style-loader',
                     publicPath: '.',
-                    use: ['css-loader?importLoaders=1', 'postcss-loader', 'sass-loader']
+                    use: ['css-loader?importLoaders=1&minimize=true', 'postcss-loader', 'sass-loader']
                 })
             },
         ]
@@ -31,9 +33,12 @@ module.exports = webpackMerge(config({ env: ENV }), {
         new webpack.HashedModuleIdsPlugin(),
         new webpack.optimize.ModuleConcatenationPlugin(),
         new CleanPlugin(['dist'], { root: helpers.root() }),
-        new ExtractTextPlugin('[name].[contenthash].css'),
+        // new ExtractTextPlugin('[name].[contenthash].css'),
+        new ExtractTextPlugin('[name].css'),
         new SuppressExtractedTextChunksWebpackPlugin(),
         new UglifyJsPlugin({
+            test: /.js($|\?)/i,
+            exclude: /index/,
             sourceMap: false,
             parallel: true,
             uglifyOptions: {
