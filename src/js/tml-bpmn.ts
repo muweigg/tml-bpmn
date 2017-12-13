@@ -20,6 +20,8 @@ import newDiagramXML from './resource/new-diagram.bpmn';
         _downloadSVG: any = null;
         _downloadDiagram: any = null;
 
+        _onClick: any = null;
+
         set modeler(val) {
             if (this._isModeler === val) return;
             this._isModeler = val;
@@ -67,11 +69,13 @@ import newDiagramXML from './resource/new-diagram.bpmn';
         }
 
 
-        constructor () {
+        constructor (options: any = { onClick: () => {} }) {
             this.createViewer();
             this._domKeyboardShortcuts = document.querySelector('.bpmn-keyboard-shortcuts');
             this._downloadSVG = document.querySelector('.download-svg');
             this._downloadDiagram = document.querySelector('.download-diagram');
+
+            this._onClick = options.onClick;
         }
 
         createViewer () {
@@ -101,7 +105,7 @@ import newDiagramXML from './resource/new-diagram.bpmn';
                     moddle = this._viewer.get('moddle'),
                     businessObject = element.businessObject;
                 if (!element.parent) return;
-                console.log(businessObject);
+                this._onClick(businessObject);
             });
         }
         
