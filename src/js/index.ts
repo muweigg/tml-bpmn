@@ -24,8 +24,8 @@ window.onload = () => {
     modeler.addEventListener('click', function () {
         tmlBpmn.modeler = !tmlBpmn.modeler;
         tmlBpmn.modeler
-            ? ksBtn.classList.add('bpmn-hide')
-            : ksBtn.classList.remove('bpmn-hide');
+            ? ksBtn.classList.remove('bpmn-hide')
+            : ksBtn.classList.add('bpmn-hide');
     }, false);
     
     let tokenSimulation = document.querySelector('#tokenSimulation');
