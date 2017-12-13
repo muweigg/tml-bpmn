@@ -20,10 +20,10 @@ module.exports = function(options) {
         devServer: devServer,
 
         entry: {
-            'js/index.js': [helpers.root('src/js/index.ts')],
-            'css/index.css': [helpers.root('src/css/index.scss')],
-            'js/tml-bpmn.js': [helpers.root('src/js/tml-bpmn.ts')],
-            'css/tml-bpmn.css': [helpers.root('src/css/tml-bpmn.scss')],
+            'js/index': [helpers.root('src/js/index.ts')],
+            'css/index': [helpers.root('src/css/index.scss')],
+            'js/tml-bpmn': [helpers.root('src/js/tml-bpmn.ts')],
+            'css/tml-bpmn': [helpers.root('src/css/tml-bpmn.scss')],
         },
 
         output: {
