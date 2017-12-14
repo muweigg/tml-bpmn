@@ -2,7 +2,8 @@ import testXML from './test.bpmn';
 
 window.onload = () => {
     const tmlBpmn = new window.TMLBpmn({
-        onClick: businessObject => console.log(businessObject)
+        onClick: businessObject => console.log('onClick: ', businessObject),
+        onSettings: businessObject => console.log('onSettings: ', businessObject)
     });
 
     let rsBtn = document.querySelector('.bpmn-auxiliary-tools button:nth-of-type(1)');

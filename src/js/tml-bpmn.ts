@@ -21,6 +21,7 @@ import newDiagramXML from './resource/new-diagram.bpmn';
         _downloadDiagram: any = null;
 
         _onClick: any = null;
+        _onSettings: any = null;
 
         set modeler(val) {
             if (this._isModeler === val) return;
@@ -69,13 +70,14 @@ import newDiagramXML from './resource/new-diagram.bpmn';
         }
 
 
-        constructor (options: any = { onClick: () => {} }) {
+        constructor (options: any = { onClick: () => {}, onSettings: () => {} }) {
             this.createViewer();
             this._domKeyboardShortcuts = document.querySelector('.bpmn-keyboard-shortcuts');
             this._downloadSVG = document.querySelector('.download-svg');
             this._downloadDiagram = document.querySelector('.download-diagram');
 
             this._onClick = options.onClick;
+            this._onSettings = options.onSettings;
         }
 
         createViewer () {
@@ -90,7 +92,7 @@ import newDiagramXML from './resource/new-diagram.bpmn';
             }
             
             this._viewer = this.modeler
-                ? this._bpmnService.getModelerInstance(options, this.tokenSimulation)
+                ? this._bpmnService.getModelerInstance(options, this.tokenSimulation, this._onSettings)
                 : this.navigated ? this._bpmnService.getNavigatedViewerInstance(options, this.tokenSimulation) : this._bpmnService.getViewerInstance(options, this.tokenSimulation);
 
             this._viewer.importXML(xml, err => {
