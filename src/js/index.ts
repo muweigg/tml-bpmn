@@ -63,6 +63,7 @@ window.onload = () => {
             'StartEvent_1u8b44m',
             'ExclusiveGateway_0trgzvx',
             'Task_0s46biu',
+            ['ExclusiveGateway_1wijtyo', 'Task_07qxgpe'],
         ];
         tmlBpmn.nodePathHighlighted(ids);
     }, false);
