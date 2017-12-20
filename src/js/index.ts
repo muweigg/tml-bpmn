@@ -54,4 +54,16 @@ window.onload = () => {
     exportJSON.addEventListener('click', function () {
         console.log(tmlBpmn.exportJSON());
     }, false);
+
+    let nodePathHighlighted = document.querySelector('#nodePathHighlighted');
+    nodePathHighlighted.addEventListener('click', function () {
+        let ids = [
+            'StartEvent_1',
+            'ExclusiveGateway_1kbxls2',
+            'StartEvent_1u8b44m',
+            'ExclusiveGateway_0trgzvx',
+            'Task_0s46biu',
+        ];
+        tmlBpmn.nodePathHighlighted(ids);
+    }, false);
 }

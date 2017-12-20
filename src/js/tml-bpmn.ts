@@ -290,6 +290,17 @@ import newDiagramXML from './resource/new-diagram.bpmn';
             });
         }
 
+        nodePathHighlighted(ids: Array<string> = []) {
+            
+            if (!this._viewer || (ids && ids.length === 0)) return;
+            
+            const canvas = this._viewer.get('canvas');
+    
+            ids.map(id => canvas.addMarker(id, 'completed'));
+    
+            canvas.addMarker(ids[ids.length - 1], 'processing');
+        }
+
         resetZoom () {
             if (!this._viewer) return;
             let canvas = this._viewer.get('canvas');
