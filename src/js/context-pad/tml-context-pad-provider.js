@@ -56,7 +56,7 @@ module.exports = function (onSettings) {
                 'settings-options': {
                     group: 'edit',
                     className: 'bpmn-icon-settings',
-                    title: '节点配置',
+                    title: translate('Settings Options'),
                     action: {
                         click: function (event, element) {
                             self._popupMenu.close();

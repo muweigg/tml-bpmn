@@ -183,6 +183,7 @@ import newDiagramXML from './resource/new-diagram.bpmn';
                 'bpmn:exclusiveGateway': 1,
                 'bpmn:parallelGateway': 4,
                 'bpmn:task': 2,
+                'bpmn:userTask': 5,
                 'bpmn:subProcess': 3
             };
             let list = Array.prototype.slice.call(nodeList);
