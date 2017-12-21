@@ -17,7 +17,7 @@ export class BpmnService {
     default: any = {
         additionalModules: [
             MinimapModule,
-            TranslateModule,
+            // TranslateModule,
         ],
         moddleExtensions: {
             tml: tmlOptions
@@ -51,5 +51,9 @@ export class BpmnService {
 
     getPaletteProviderModule () {
         return PaletteProviderModule;
+    }
+
+    getTranslateModule (language) {
+        return TranslateModule(language);
     }
 }

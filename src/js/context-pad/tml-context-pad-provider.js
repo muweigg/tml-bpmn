@@ -60,7 +60,7 @@ module.exports = function (onSettings) {
                     action: {
                         click: function (event, element) {
                             self._popupMenu.close();
-                            onSettings.emit(element.businessObject);
+                            onSettings(element.businessObject);
                         }
                     }
                 }

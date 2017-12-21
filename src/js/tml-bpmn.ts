@@ -20,6 +20,7 @@ import newDiagramXML from './resource/new-diagram.bpmn';
         _downloadSVG: any = null;
         _downloadDiagram: any = null;
 
+        _language: any = {};
         _onClick: any = null;
         _onSettings: any = null;
 
@@ -76,6 +77,7 @@ import newDiagramXML from './resource/new-diagram.bpmn';
             this._downloadSVG = document.querySelector('.download-svg');
             this._downloadDiagram = document.querySelector('.download-diagram');
 
+            this._language = options.language;
             this._onClick = options.onClick;
             this._onSettings = options.onSettings;
         }
@@ -83,11 +85,13 @@ import newDiagramXML from './resource/new-diagram.bpmn';
         createViewer () {
             let xml: string = this._xml === '' ? newDiagramXML: this._xml;
             let paletteProviderModule = this._bpmnService.getPaletteProviderModule();
+            let translateModule = this._bpmnService.getTranslateModule(this._language);
             let options: any = {
                 container: '#bpmn-canvas',
                 keyboard: { bindTo: document },
                 additionalModules: [
                     paletteProviderModule,
+                    translateModule,
                 ]
             }
             
