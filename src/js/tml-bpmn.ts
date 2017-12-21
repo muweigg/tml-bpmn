@@ -71,7 +71,7 @@ import newDiagramXML from './resource/new-diagram.bpmn';
         }
 
 
-        constructor (options: any = { onClick: () => {}, onSettings: () => {} }) {
+        constructor (options: any = { language: () => {}, onClick: () => {}, onSettings: () => {} }) {
             this.createViewer();
             this._domKeyboardShortcuts = document.querySelector('.bpmn-keyboard-shortcuts');
             this._downloadSVG = document.querySelector('.download-svg');
