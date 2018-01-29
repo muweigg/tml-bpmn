@@ -55,6 +55,11 @@ window.onload = () => {
     tokenSimulation.addEventListener('click', function () {
         tmlBpmn.tokenSimulation = !tmlBpmn.tokenSimulation;
     }, false);
+    
+    let allowDownload = document.querySelector('#allowDownload');
+    allowDownload.addEventListener('click', function () {
+        tmlBpmn.allowDownload = !tmlBpmn.allowDownload;
+    }, false);
 
     
     let loadTestXML = document.querySelector('#loadTestXML');
@@ -80,12 +85,80 @@ window.onload = () => {
     let nodePathHighlighted = document.querySelector('#nodePathHighlighted');
     nodePathHighlighted.addEventListener('click', function () {
         let ids = [
-            'StartEvent_1',
-            'ExclusiveGateway_1kbxls2',
-            'StartEvent_1u8b44m',
-            'ExclusiveGateway_0trgzvx',
-            'Task_0s46biu',
-            ['ExclusiveGateway_1wijtyo', 'Task_07qxgpe'],
+            {
+                id: 'ExclusiveGateway_1kbxls2',
+                color: {
+                    task: {
+                        'fill': '#d0eba4',
+                        'stroke': '#d0eba4',
+                    },
+                    text: {
+                        'fill': '#668431',
+                        'stroke': '#668431',
+                    }
+                }
+            },
+            {
+                id: 'Task_0n9lj4c',
+                color: {
+                    task: {
+                        'stroke': '#ff9800',
+                    },
+                    text: {
+                        'fill': '#ff9800',
+                    }
+                }
+            },
+            {
+                id: 'ExclusiveGateway_0trgzvx',
+                color: {
+                    task: {
+                        'fill': '#d0eba4',
+                        'stroke': '#d0eba4',
+                    },
+                    text: {
+                        'fill': '#668431',
+                        'stroke': '#668431',
+                    }
+                }
+            },
+            {
+                id: 'Task_0s46biu',
+                color: {
+                    task: {
+                        'fill': '#d0eba4',
+                        'stroke': '#d0eba4',
+                    },
+                    text: {
+                        'fill': '#668431',
+                    }
+                }
+            },
+            {
+                id: 'ExclusiveGateway_1wijtyo',
+                color: {
+                    task: {
+                        'fill': '#fff0be',
+                        'stroke': '#ff9800',
+                    },
+                    text: {
+                        'fill': '#ff9800',
+                        'stroke': '#ff9800',
+                    }
+                }
+            },
+            {
+                id: 'Task_07qxgpe',
+                color: {
+                    task: {
+                        'fill': '#fff0be',
+                        'stroke': '#ff9800',
+                    },
+                    text: {
+                        'fill': '#ff9800',
+                    }
+                }
+            },
         ];
         tmlBpmn.nodePathHighlighted(ids);
     }, false);

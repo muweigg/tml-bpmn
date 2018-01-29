@@ -2,6 +2,7 @@ import 'classlist.js';
 import debounce from 'lodash/debounce';
 import { BpmnService } from './service/bpmn.service';
 import newDiagramXML from './resource/new-diagram.bpmn';
+import svgAttr from 'tiny-svg/lib/attr';
 
 (() => {
     class TMLBpmn {
@@ -11,12 +12,14 @@ import newDiagramXML from './resource/new-diagram.bpmn';
         _isModeler: boolean = false;
         _isNavigated: boolean = false;
         _isTokenSimulation: boolean = false;
+        _isAllowDownload: boolean = false;
         _bpmnService: any = new BpmnService();
         _parser: DOMParser = new DOMParser();
         _bpmnNodeIndex: any = {};
 
         _domKeyboardShortcuts: any = null;
         _isShowKeyboardShortcuts: boolean = false;
+        _downloads: any = null;
         _downloadSVG: any = null;
         _downloadDiagram: any = null;
 
@@ -56,6 +59,17 @@ import newDiagramXML from './resource/new-diagram.bpmn';
         }
         
         get tokenSimulation() { return this._isTokenSimulation; }
+        
+        set allowDownload(val) {
+            if (this._isAllowDownload === val) return;
+            this._isAllowDownload = val;
+            if (!this._downloads) return;
+            this._isAllowDownload
+                ? this._downloads.classList.remove('bpmn-hide')
+                : this._downloads.classList.add('bpmn-hide');
+        }
+        
+        get allowDownload() { return this._isAllowDownload; }
 
         set showKeyboardShortcuts(val) {
             if (this._isShowKeyboardShortcuts === val) return;
@@ -74,6 +88,7 @@ import newDiagramXML from './resource/new-diagram.bpmn';
         constructor (options: any = { language: () => {}, onClick: () => {}, onSettings: () => {} }) {
             this.createViewer();
             this._domKeyboardShortcuts = document.querySelector('.bpmn-keyboard-shortcuts');
+            this._downloads = document.querySelector('.bpmn-downloads');
             this._downloadSVG = document.querySelector('.download-svg');
             this._downloadDiagram = document.querySelector('.download-diagram');
 
@@ -295,23 +310,18 @@ import newDiagramXML from './resource/new-diagram.bpmn';
             });
         }
 
-        nodePathHighlighted(ids: Array<string | Array<string>> = []) {
+        nodePathHighlighted(ids: Array<any> = []) {
     
             if (!this._viewer || (ids && ids.length === 0)) return;
-            
-            const canvas = this._viewer.get('canvas');
+
+            function setColor (item) {
+                const task = document.querySelector(`g[data-element-id='${item.id}'] .djs-visual`).children[0];
+                const text = task.nextSibling;
+                svgAttr(task, item.color.task);
+                if (text && item.color.text) svgAttr(text, item.color.text);
+            }
     
-            ids.map((id:any) => {
-                if (id instanceof Array) return;
-                canvas.addMarker(id, 'completed');
-            });
-    
-            let lastId:any = ids[ids.length - 1];
-    
-            if (lastId instanceof Array)
-                lastId.map(id => canvas.addMarker(id, 'processing'));
-            else
-                canvas.addMarker(lastId, 'processing');
+            ids.map((item:any) => setColor(item));
     
         }
 
