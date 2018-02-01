@@ -10,7 +10,7 @@ import svgAttr from 'tiny-svg/lib/attr';
         _xml: string = '';
         _viewer: any = null;
         _isModeler: boolean = false;
-        _isNavigated: boolean = false;
+        _isNavigated: boolean = true;
         _isTokenSimulation: boolean = false;
         _isAllowDownload: boolean = false;
         _bpmnService: any = new BpmnService();
