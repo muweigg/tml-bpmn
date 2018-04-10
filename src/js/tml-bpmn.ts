@@ -210,6 +210,7 @@ import svgAttr from 'tiny-svg/lib/attr';
                 'bpmn:parallelGateway': 4,
                 'bpmn:task': 2,
                 'bpmn:userTask': 5,
+                'bpmn:serviceTask': 6,
                 'bpmn:subProcess': 3
             };
             let list = Array.prototype.slice.call(nodeList);
