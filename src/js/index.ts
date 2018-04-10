@@ -25,7 +25,12 @@ window.onload = () => {
     const tmlBpmn = new window.TMLBpmn({
         language: language,
         onClick: businessObject => console.log('onClick: ', businessObject),
-        onSettings: businessObject => console.log('onSettings: ', businessObject)
+        onSettings: businessObject => console.log('onSettings: ', businessObject),
+        onDelete: e => {
+            console.log('业务对象: ', e.businessObject);
+            let isAllowed = window.confirm(`确认移除 "${e.nodeName}" ？`);
+            if (isAllowed) e.remove();
+        }
     });
 
     let rsBtn = document.querySelector('.bpmn-auxiliary-tools button:nth-of-type(1)');

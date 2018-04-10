@@ -5,7 +5,7 @@ const assign = require('lodash/assign'),
     is = require('bpmn-js/lib/util/ModelUtil').is,
     isAny = require('bpmn-js/lib/features/modeling/util/ModelingUtil').isAny;
 
-module.exports = function (onSettings) {
+module.exports = function (events) {
     
     function TMLContextPadProvider(contextPad, modeling, translate, rules, canvas, popupMenu) {
     
@@ -60,7 +60,7 @@ module.exports = function (onSettings) {
                     action: {
                         click: function (event, element) {
                             self._popupMenu.close();
-                            onSettings(element.businessObject);
+                            if (events.onSettings) events.onSettings(element.businessObject);
                         }
                     }
                 }
@@ -82,8 +82,10 @@ module.exports = function (onSettings) {
                     action: {
                         click: (e) => {
                             let name = businessObject.name ? businessObject.name : nameIdx[businessObject.$type];
-                            let isAllowed = window.confirm(`确认移除 "${name}" ？`);
-                            if (isAllowed) removeElement(e);
+                            e.nodeName = name;
+                            e.businessObject = businessObject;
+                            e.remove = () => removeElement(e);
+                            if (events.onDelete) events.onDelete(e);
                         },
                         dragstart: removeElement
                     }

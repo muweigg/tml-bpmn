@@ -44,8 +44,8 @@ export class BpmnService {
         return new BpmnNavigatedViewer(options);
     }
     
-    getModelerInstance (options: any, tokenSimulation: boolean = false, onSettings: () => {}) {
-        options = mergeWith({additionalModules: [TMLContextPadProviderModule(onSettings)]}, this.default, options, this.customizerMerge);
+    getModelerInstance (options: any, tokenSimulation: boolean = false, events:any = {}) {
+        options = mergeWith({additionalModules: [TMLContextPadProviderModule(events)]}, this.default, options, this.customizerMerge);
         if (tokenSimulation) options.additionalModules.push(TokenSimulationModule);
         return new BpmnModeler(options);
     }

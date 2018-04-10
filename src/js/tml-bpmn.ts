@@ -26,6 +26,7 @@ import svgAttr from 'tiny-svg/lib/attr';
         _language: any = {};
         _onClick: any = null;
         _onSettings: any = null;
+        _onDelete: any = null;
 
         set modeler(val) {
             if (this._isModeler === val) return;
@@ -85,7 +86,7 @@ import svgAttr from 'tiny-svg/lib/attr';
         }
 
 
-        constructor (options: any = { language: () => {}, onClick: () => {}, onSettings: () => {} }) {
+        constructor (options: any = { language: () => {}, onClick: () => {}, onSettings: () => {}, onDelete: () => {} }) {
             this.createViewer();
             this._domKeyboardShortcuts = document.querySelector('.bpmn-keyboard-shortcuts');
             this._downloads = document.querySelector('.bpmn-downloads');
@@ -95,6 +96,7 @@ import svgAttr from 'tiny-svg/lib/attr';
             this._language = options.language;
             this._onClick = options.onClick;
             this._onSettings = options.onSettings;
+            this._onDelete = options.onDelete;
         }
 
         createViewer () {
@@ -109,9 +111,14 @@ import svgAttr from 'tiny-svg/lib/attr';
                     translateModule,
                 ]
             }
+
+            const events = {
+                onSettings : this._onSettings,
+                onDelete : this._onDelete
+            }
             
             this._viewer = this.modeler
-                ? this._bpmnService.getModelerInstance(options, this.tokenSimulation, this._onSettings)
+                ? this._bpmnService.getModelerInstance(options, this.tokenSimulation, events)
                 : this.navigated ? this._bpmnService.getNavigatedViewerInstance(options, this.tokenSimulation) : this._bpmnService.getViewerInstance(options, this.tokenSimulation);
 
             this._viewer.importXML(xml, err => {
